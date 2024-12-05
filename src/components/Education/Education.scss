@@ -1,0 +1,23 @@
+.education {
+  padding: 100px 10%;
+  background: #fff;
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #333;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    }
+  }
+}
