@@ -1,13 +1,23 @@
-import { motion } from 'framer-motion';
-import './Timeline.scss';
+import { motion } from "framer-motion";
+import "./Timeline.scss";
 
 const Timeline = ({ items, type }) => {
+  console.log("items", items);
+  console.log("type", type);
+  console.log("items", items);
+  console.log("type", type);
+  console.log(
+    "items.map",
+    items.map((item, index) => item)
+  );
+  console.log("items.length", items.length);
+
   return (
-    <div className="timeline">
+    <div className={`${type !== "experience" ? "timeline" : ""}`.trim()}>
       {items.map((item, index) => (
         <motion.div
           key={index}
-          className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
+          className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`}
           initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -18,12 +28,19 @@ const Timeline = ({ items, type }) => {
             <h3>{item.title}</h3>
             <h4>{item.organization}</h4>
             <p>{item.description}</p>
-            {item.achievements && (
-              <ul className="achievements">
+            {item.achievements && Array.isArray(item.achievements) && (
+              <div className="achievements">
                 {item.achievements.map((achievement, i) => (
-                  <li key={i}>{achievement}</li>
+                  <div key={i} className="achievement-item">
+                    <h5>{achievement.project}</h5>
+                    <ul>
+                      {achievement.details.map((detail, j) => (
+                        <li key={j}>{detail}</li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
           </div>
         </motion.div>

@@ -1,36 +1,30 @@
-import { motion } from 'framer-motion';
-import Timeline from '../Timeline/Timeline';
-import './Education.scss';
+import { motion } from "framer-motion";
+import Timeline from "../Timeline/Timeline";
+import "./Education.scss";
 
 const Education = () => {
   const educationData = [
     {
-      date: '2018 - 2022',
-      title: 'Bachelor of Computer Science',
-      organization: 'University of Technology',
-      description: 'Graduated with First Class Honours. Specialized in Software Engineering and Artificial Intelligence.',
-      achievements: [
-        'Dean\'s List for Academic Excellence',
-        'Led the University Programming Club',
-        'Completed thesis on Machine Learning Applications'
-      ]
+      date: "2016 - 2020",
+      title: "Bachelor of Engineering",
+      organization: "SDM Institute of Technology, Ujire",
+      description: "Specialized in Electronics and Communication Engineering.",
     },
     {
-      date: '2016 - 2018',
-      title: 'Associate Degree in Computer Science',
-      organization: 'Community College',
-      description: 'Foundation studies in Computer Science with focus on programming fundamentals.',
-      achievements: [
-        'Perfect GPA in Programming courses',
-        'Received Merit Scholarship',
-        'Participated in National Coding Competition'
-      ]
-    }
+      date: "2015 - 2016",
+      title: "Intermediate (Class XII)",
+      organization: "SDM PU College, Ujire",
+    },
+    {
+      date: "2013 - 2014",
+      title: "Matriculation (Class X)",
+      organization: "SDM CBSE School, Ujire",
+    },
   ];
 
   return (
     <section id="education" className="education">
-      <motion.h2 
+      <motion.h2
         className="section-title"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

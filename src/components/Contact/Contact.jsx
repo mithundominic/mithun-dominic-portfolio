@@ -1,8 +1,36 @@
+import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+import emailjs from "@emailjs/browser";
 import "./Contact.scss";
 
+const YOUR_SERVICE_ID = "service_6y6cn6r";
+const YOUR_TEMPLATE_ID = "template_ahxbi3h";
+const YOUR_PUBLIC_KEY = "ZfKJ_Kx5Ka_zrQvYK";
+
 const Contact = () => {
+  const formRef = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        YOUR_SERVICE_ID,
+        YOUR_TEMPLATE_ID,
+        formRef.current,
+        YOUR_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error);
+        }
+      );
+  };
+
   return (
     <section id="contact" className="contact">
       <motion.h2
@@ -28,12 +56,12 @@ const Contact = () => {
           </p>
 
           <div className="contact-links">
-            <a href="mailto:your.email@example.com" className="contact-link">
+            <a href="mailto:mithundmnc934@gmail.comm" className="contact-link">
               <FaEnvelope className="icon" />
-              <span>your.email@example.com</span>
+              <span>mithundmnc934@gmail.com</span>
             </a>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/mithundominic"
               className="contact-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -42,7 +70,7 @@ const Contact = () => {
               <span>GitHub</span>
             </a>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/mithun-dominic"
               className="contact-link"
               target="_blank"
               rel="noopener noreferrer"
@@ -58,18 +86,35 @@ const Contact = () => {
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
+          ref={formRef}
+          onSubmit={sendEmail}
         >
           <div className="form-group">
-            <input type="text" placeholder="Your Name" required />
+            <input
+              type="text"
+              placeholder="Your Name"
+              name="from_name"
+              required
+            />
           </div>
           <div className="form-group">
-            <input type="email" placeholder="Your Email" required />
+            <input
+              type="email"
+              placeholder="Your Email"
+              name="user_email"
+              required
+            />
           </div>
           <div className="form-group">
-            <textarea placeholder="Your Message" required></textarea>
+            <textarea
+              placeholder="Your Message"
+              name="message"
+              required
+            ></textarea>
           </div>
           <motion.button
             type="submit"
+            value="Send"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
